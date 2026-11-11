@@ -1,0 +1,13 @@
+fastapi[standard]
+SQLAlchemy>=2.0,<2.1
+psycopg[binary]
+Alembic
+python-dotenv
+pydantic-settings
+PyJWT
+argon2-cffi
+google-auth
+httpx
+pypdf
+cloudinary
+pytest
