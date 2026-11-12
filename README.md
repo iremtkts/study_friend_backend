@@ -2,6 +2,31 @@
 
 FastAPI tabanlı çalışma arkadaşı API'si. PostgreSQL veritabanı Alembic ile yönetilir; dosyalar Cloudinary'de saklanabilir. Yapay zekâ akışları n8n Cloud, yerel Ollama ve Pinecone ile entegre edilebilir.
 
+## Dokümantasyon
+
+- [Mimari ve akışlar](docs/architecture.md)
+- [AI katmanı: Ollama, n8n ve Pinecone](docs/ai-layer.md)
+- [API uçları ve kullanım örnekleri](docs/api.md)
+- [Veritabanı şeması ve ER diyagramı](docs/database.md)
+- [Ortam değişkenleri ve yapılandırma](docs/configuration.md)
+- API'nin etkileşimli belgeleri: `/docs`; alternatif görünüm: `/redoc`; OpenAPI JSON: `/openapi.json`.
+
+## Mimari
+
+```mermaid
+flowchart LR
+    Client[Flutter istemcisi] -->|HTTPS / REST / JWT| API[FastAPI backend<br/>Docker veya Railway]
+    API --> DB[(PostgreSQL)]
+    API -->|JSON + gizli başlık| N8N[n8n workflow'ları]
+    API --> Files[Cloudinary veya yerel dosyalar]
+    N8N -->|gemma3:4b<br/>sohbet, özet, test| Ollama[Yerel Ollama]
+    N8N -->|bge-m3 embedding| Ollama
+    N8N -->|1024 boyut, cosine| Pinecone[(Pinecone)]
+    N8N -.->|ngrok HTTPS tüneli| Ollama
+```
+
+Sohbet, özet ve test üretimi n8n workflow'ları aracılığıyla yerel Ollama modelleriyle yapılır; ayrıntılar için [AI katmanına](docs/ai-layer.md) bakın.
+
 ## Docker ile çalıştırma
 
 1. `.env.example` dosyasını `.env` olarak kopyalayın; yer tutucuları kendi servis ayarlarınızla doldurun. `POSTGRES_PASSWORD` zorunludur. `DATABASE_URL` Compose tarafından `db` servisine bağlanacak şekilde ayarlanır.
@@ -21,7 +46,8 @@ Ollama varsayılan `docker compose up` çalıştırmasında başlamaz. İsteğe 
 
 ```sh
 docker compose --profile ollama up -d ollama
-docker compose exec ollama ollama pull llama3.1
+docker compose exec ollama ollama pull gemma3:4b
+docker compose exec ollama ollama pull bge-m3
 ```
 
 Ollama host üzerinde yalnızca `127.0.0.1:11435` adresinden erişilebilir.
