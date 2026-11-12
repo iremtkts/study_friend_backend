@@ -67,7 +67,7 @@ SMTP ayarı eksik veya gönderim geçici olarak başarısız olduğunda kayıt v
 | `AI_OUTPUT_LANGUAGE` | `tr` | Özet webhook dil alanı. |
 | `INDEX_MAX_INPUT_CHARS` | `20000` | Not indeksleme metni karakter sınırı. |
 
-n8n adresi HTTPS olmalıdır; `localhost`/loopback için HTTP kullanılabilir. Webhook yolları ve payload sözleşmeleri [mimari rehberinde](architecture.md) ve [API rehberinde](api.md) açıklanmıştır. Pinecone index ayarı n8n entegrasyonuna aittir; önerilen index 1024 boyut ve cosine metric kullanır.
+n8n adresi HTTPS olmalıdır; `localhost`/loopback için HTTP kullanılabilir. Webhook yolları ve payload sözleşmeleri [mimari rehberinde](architecture.md), [API rehberinde](api.md) ve gerçek workflow export'ları için [`n8n-files/`](../n8n-files/) klasöründe açıklanmıştır. Modeller, prompt'lar ve Pinecone metadata/filter gereksinimleri [AI katmanı rehberindedir](ai-layer.md). Pinecone index ayarı n8n entegrasyonuna aittir; önerilen index 1024 boyut ve cosine metric kullanır.
 
 ## Quiz ve özet doğrulama sınırları
 

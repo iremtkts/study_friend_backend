@@ -54,7 +54,7 @@ Ollama host üzerinde yalnızca `127.0.0.1:11435` adresinden erişilebilir.
 
 ## Harici entegrasyonlar
 
-- n8n Cloud'da `summarize-note`, `index-note`, `chat` ve `generate-quiz` webhook iş akışları kurulmalıdır.
+- n8n Cloud'da `summarize-note`, `index-note`, `chat` ve `generate-quiz` webhook iş akışları kurulmalıdır. Workflow export'ları ve model/prompt eşlemesi [`n8n-files/`](n8n-files/) klasöründe ve [AI katmanı rehberinde](docs/ai-layer.md) bulunur; n8n credential'larını ayrıca, secret olarak yapılandırın.
 - Pinecone index'i **1024 boyut** ve **cosine** metric ile oluşturulmalıdır.
 - n8n Cloud'un yerel Ollama'ya erişmesi gerekiyorsa Ollama'nın `11435` portunu ngrok gibi bir tünel üzerinden erişilebilir yapıp ilgili iş akışında kullanın.
 - Cloudinary, Google OAuth ve SMTP bilgileri `.env` içinde yapılandırılır. Bu dosyayı paylaşmayın veya imaja eklemeyin.
