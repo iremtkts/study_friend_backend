@@ -2,6 +2,19 @@
 
 FastAPI tabanlı çalışma arkadaşı API'si. PostgreSQL veritabanı Alembic ile yönetilir; dosyalar Cloudinary'de saklanabilir. Yapay zekâ akışları n8n Cloud, yerel Ollama ve Pinecone ile entegre edilebilir.
 
+## Canlı Demo Hakkında Not
+
+Uygulama Railway'in **Hobby** planında yayınlanmaktadır. Bu planda giden SMTP (25, 465, 587 portları) platform tarafından kapalıdır. Bu nedenle canlı sürümde **e-posta gönderen özellikler çalışmaz** (e-posta doğrulama, şifre sıfırlama, bildirim e-postaları vb.).
+
+Uygulamayı e-posta doğrulamasına ihtiyaç duymadan denemek için hazır bir test hesabı oluşturulmuştur:
+
+| Alan | Değer |
+|------|-------|
+| E-posta | `test@gmail.com` |
+| Parola | `test.123456789` |
+
+> Bu hesap yalnızca demo amaçlıdır; kişisel bir veri içermez.
+
 ## Dokümantasyon
 
 - [Mimari ve akışlar](docs/architecture.md)
